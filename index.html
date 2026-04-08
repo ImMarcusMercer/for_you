@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Someone Special</title>
+  <meta name="description" content="A heartfelt apology and confession." />
+  <style>
+    :root {
+      --bg1: #fdced7;
+      --bg2: #fca1b9;
+      --card: rgba(255, 255, 255, 0.82);
+      --text: #3a2b33;
+      --muted: #7c6670;
+      --accent: #e96692;
+      --accent-dark: #cc3a68;
+      --line: rgba(217, 107, 143, 0.18);
+      --shadow: 0 20px 50px rgba(120, 70, 90, 0.15);
+      --radius: 24px;
+      --max: 920px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, #fff9fb 0%, transparent 30%),
+        radial-gradient(circle at bottom right, #ffdfe8 0%, transparent 28%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+      min-height: 100vh;
+      line-height: 1.7;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .floating-hearts {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 0, 0, 0.25);
+      font-size: 22px;
+      animation: floatUp linear infinite;
+      user-select: none;
+    }
+
+    .heart:nth-child(1)  { left: 8%;  animation-duration: 15s; animation-delay: 0s;  font-size: 20px; }
+    .heart:nth-child(2)  { left: 16%; animation-duration: 20s; animation-delay: 3s;  font-size: 26px; }
+    .heart:nth-child(3)  { left: 25%; animation-duration: 17s; animation-delay: 7s;  font-size: 18px; }
+    .heart:nth-child(4)  { left: 34%; animation-duration: 23s; animation-delay: 2s;  font-size: 24px; }
+    .heart:nth-child(5)  { left: 45%; animation-duration: 18s; animation-delay: 6s;  font-size: 20px; }
+    .heart:nth-child(6)  { left: 56%; animation-duration: 21s; animation-delay: 1s;  font-size: 28px; }
+    .heart:nth-child(7)  { left: 66%; animation-duration: 16s; animation-delay: 5s;  font-size: 19px; }
+    .heart:nth-child(8)  { left: 75%; animation-duration: 22s; animation-delay: 8s;  font-size: 23px; }
+    .heart:nth-child(9)  { left: 85%; animation-duration: 19s; animation-delay: 4s;  font-size: 21px; }
+    .heart:nth-child(10) { left: 93%; animation-duration: 24s; animation-delay: 9s;  font-size: 25px; }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(110vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-15vh) rotate(12deg);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 40px 0;
+    }
+
+    .hero-card {
+      width: 100%;
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: var(--shadow);
+      border-radius: 32px;
+      padding: 48px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(217,107,143,0.16), transparent 70%);
+      top: -60px;
+      right: -60px;
+      border-radius: 50%;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(255,255,255,0.55), transparent 70%);
+      bottom: -40px;
+      left: -40px;
+      border-radius: 50%;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.9rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-dark);
+      background: rgba(217, 107, 143, 0.09);
+      padding: 10px 16px;
+      border-radius: 999px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(217, 107, 143, 0.15);
+    }
+
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.4rem, 7vw, 4.8rem);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .hero-subtitle {
+      max-width: 700px;
+      margin: 0 auto 28px;
+      font-size: 1.08rem;
+      color: var(--muted);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      padding: 14px 22px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      box-shadow: 0 10px 24px rgba(217, 107, 143, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.75);
+      color: var(--text);
+      border-color: rgba(217, 107, 143, 0.18);
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      transform: translateY(-2px);
+    }
+
+    main {
+      padding-bottom: 70px;
+    }
+
+    section {
+      margin-bottom: 28px;
+    }
+
+    .card {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.65);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 34px 26px;
+    }
+
+    .section-title {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.7rem, 5vw, 2.5rem);
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .letter {
+      white-space: pre-line;
+      font-size: 1.03rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .mini-card {
+      background: rgba(255,255,255,0.66);
+      border: 1px solid rgba(217, 107, 143, 0.12);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .mini-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      color: var(--accent-dark);
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 20px 0;
+    }
+
+    .highlight-quote {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.2rem, 4vw, 1.9rem);
+      text-align: center;
+      color: var(--accent-dark);
+      line-height: 1.5;
+    }
+
+    .signature {
+      margin-top: 24px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 18px 0 8px;
+      font-size: 0.96rem;
+    }
+
+    .small-note {
+      margin-top: 14px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 760px) {
+      .hero-card {
+        padding: 38px 20px;
+        border-radius: 26px;
+      }
+
+      .card {
+        padding: 28px 18px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-hearts" aria-hidden="true">
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+    <span class="heart">♥</span>
+  </div>
+
+  <header>
+    <div class="container">
+      <div class="hero-card">
+        <div class="tag">A letter from my heart</div>
+        <h1>To Someone Very Special</h1>
+        <p class="hero-subtitle">
+          This page is for you. A quiet little corner on the internet where I can say
+          the things I should have said more clearly, more honestly, and more sincerely.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#apology">Read My Apology</a>
+          <a class="btn btn-secondary" href="#confession">Read My Confession</a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <section id="apology">
+        <div class="card">
+          <h2 class="section-title">My Apology</h2>
+        
+
+          <div class="letter">
+            My Adored Genny,
+
+                I apologize for what I did and what I didn't before. 
+                I know I came off as "paasa" and I've hurt you. And I am very sorry for all of that.
+                We were young and I didn't know any better.
+
+                But the path we took made us who and where we are right now.
+                And I am forever sorry for my words and actions.
+
+                And for earlier, yes I made a genuine mistake during translation, promise.
+                And I know I've hurt you again. I'm sorry naaaaaa.
+
+          </div>
+
+          <div class="signature">— Janmarc Pulmones</div>
+        </div>
+      </section>
+
+      
+
+      <section id="confession">
+        <div class="card">
+          <h2 class="section-title">My Confession</h2>
+          <div class="letter">
+            I have adored you since high school, yes.
+            Made promises and broke them.
+
+            But everything that had happened led us right to this moment.
+            Our paths have finally met.
+
+            And with that, here I am, asking for another or perhaps a last chance to make everything right.
+
+            So I will ask you with my heart, will you take my hand and partake on this journey called life Together?
+          </div>
+
+          <div class="divider"></div>
+
+          <p class="highlight-quote">
+            “For All Times, Always...”
+          </p>
+
+          <div class="signature">— Janmarc Pulmones</div>
+        </div>
+      </section>
+
+      <section id="memories">
+        <div class="card">
+          <h2 class="section-title">Little Things About You</h2>
+          
+
+          <div class="grid">
+            <div class="mini-card">
+              <h3>Your smile</h3>
+              <p>
+                It has a way of making ordinary moments feel lighter and better.
+              </p>
+            </div>
+
+            <div class="mini-card">
+              <h3>Imong Kamaldita</h3>
+              <p>
+                It has a very unique way of making my heart flutter.
+              </p>
+            </div>
+
+            <div class="mini-card">
+              <h3>Your bright mind</h3>
+              <p>
+                You are genuinely a wise person and I like you for that.
+              </p>
+            </div>
+
+            <div class="mini-card">
+              <h3>And of course, how you care</h3>
+              <p>
+                1 call and you showed me something no one ever has. That you actually cared. For my life and I thank you for that.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="final-message">
+        <div class="card">
+          <h2 class="section-title">Final Words</h2>
+          
+
+          <div class="letter">
+            Whatever happens after this, I just want to thank you for reading.
+
+            I know feelings and forgiveness cannot be rushed, and I respect whatever you feel.
+            I only hope this page was able to show you my sincerity.
+
+            If nothing else, please know this:
+            I would have annoyed you forever.
+          </div>
+
+          <div class="signature">With sincerity, Janmarc Pulmones</div>
+        </div>
+      </section>
+
+      <div class="footer">
+        Made with honesty, courage, and a very nervous heart.
+      </div>
+    </div>
+  </main>
+</body>
+</html>
